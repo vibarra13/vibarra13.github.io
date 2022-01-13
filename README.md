@@ -8,12 +8,19 @@ This portfolio is to showcase some coding projects that I have come up with.
 referenced two radio telescope catalogs of space objects. After referencing those catalogs, the algorithm finds one item from one catalog, and references all items from the
 other catalog to see if they are the same. This is done for both catalogs, and the function returns the matches, and even returns the non-matches. This project helped me learn python's packages AstroPy to read FITS image files and NumPy to make usable data. I learned how to create a viable algorithm to cross reference space catalogs, how to work with large data files to create usable data, and print out easy to read results.
 
-### Cross-matching algorithm
+## Cross-matching algorithm
 
 In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension (RA) & Declination (DEC). There is also other data contained within the files but I took only the data I needed using array segmentation. Here is a sample of that data:
 
 ```markdown
-Syntax highlighted code block
+Data file: the explanation of the column numbers we need (1-7)
+Column: 1. ID Number of the object
+        2. Hour in RA
+        3. Minute in RA
+        4. Second in RA
+        5. Degree in DMS
+        6. Minute in DMS
+        7. Second in DMS
 
   1  00 04 35.65 -47 36 19.1   0.87 0.04 0.97 0.06  0.90 0.04                0.995 0.030            17.63 Q 1.F.11.C  PKS 0002-478
   2  00 10 35.92 -30 27 48.3   0.74 0.03 0.72 0.04  0.63 0.03  0.315 0.009   0.419 0.013 1.19  La01 19.59 Q 1.F.11..  PKS 0008-307
@@ -122,6 +129,10 @@ print(len(no_matches))
 
 ```
 
+## My Astronomy Website
 
+I coded my own website to demonstrate what I'm able to do with CSS and HTML, and to display some of my astrophotography photos that I have imaged and processed myself.
+
+This project took about a year and a half to complete, as I was a bit on and off with it. It was a fun project to create, and I hope to get more experience with stuff like this soon! Click here to see the website in its entirety, and enjoy scrolling through it! It's my pride and joy! :)
 
 
