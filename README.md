@@ -135,4 +135,4 @@ print(len(no_matches))
 
 ```
 
-
+This project in Python took me about 2 months to learn completely, and it taught me a lot about data segmentation and NumPy data manipulation methods. 
