@@ -10,32 +10,17 @@ other catalog to see if they are the same. This is done for both catalogs, and t
 
 ### Cross-matching algorithm
 
-In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension & Declination. There is also other data contained within the files but I took only the data I needed using array segmentation.
+In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension & Declination. There is also other data contained within the files but I took only the data I needed using array segmentation. Here is a sample of that data:
 
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+  1  00 04 35.65 -47 36 19.1   0.87 0.04 0.97 0.06  0.90 0.04                0.995 0.030            17.63 Q 1.F.11.C  PKS 0002-478
+  2  00 10 35.92 -30 27 48.3   0.74 0.03 0.72 0.04  0.63 0.03  0.315 0.009   0.419 0.013 1.19  La01 19.59 Q 1.F.11..  PKS 0008-307
+  3  00 11 01.27 -26 12 33.1   0.64 0.07 0.82 0.07  0.69 0.03  0.210 0.006               1.096 Wr83 19.53 Q 4.F.44.C  PKS 0008-264
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vibarra13/vibarra13/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
