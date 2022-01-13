@@ -1,7 +1,9 @@
 ## Welcome to my project portfolio
 
 This portfolio is to showcase some coding projects that I have come up with. 
+
 • First is the website that I coded with HTML and CSS, which is to showcase my coding skills and the astrophotography photos that I have taken over the last few years.
+
 • Second is a data astronomy project that I worked on from a class in data astronomy on Coursera. With some guidance, I was able to create a crossmatching algorithm that
 referenced two radio telescope catalogs of space objects. After referencing those catalogs, the algorithm finds one item from one catalog, and references all items from the
 other catalog to see if they are the same. This is done for both catalogs, and the function returns the matches, and even returns the non-matches. This project helped me learn python's packages AstroPy to read FITS image files and NumPy to make usable data. I learned how to create a viable algorithm to cross reference space catalogs, how to work with large data files to create usable data, and print out easy to read results.
