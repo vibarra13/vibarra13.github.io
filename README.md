@@ -1,12 +1,14 @@
 ## Welcome to my project portfolio
 
-You can use the [editor on GitHub](https://github.com/vibarra13/vibarra13/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This portfolio is to showcase some coding projects that I have come up with. 
+• First is the website that I coded with HTML and CSS, which is to showcase my coding skills and the astrophotography photos that I have taken over the last few years.
+• Second is a data astronomy project that I worked on from a class in data astronomy on Coursera. With some guidance, I was able to create a crossmatching algorithm that
+referenced two radio telescope catalogs of space objects. After referencing those catalogs, the algorithm finds one item from one catalog, and references all items from the
+other catalog to see if they are the same. This is done for both catalogs, and the function returns the matches, and even returns the non-matches. This project helped me learn python's packages AstroPy to read FITS image files and NumPy to make usable data. I learned how to create a viable algorithm to cross reference space catalogs, how to work with large data files to create usable data, and print out easy to read results.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Cross-matching algorithm
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension & Declination. There is also other data contained within the files but I took only the data I needed using array segmentation.
 
 ```markdown
 Syntax highlighted code block
