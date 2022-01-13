@@ -8,6 +8,12 @@ This portfolio is to showcase some coding projects that I have come up with.
 referenced two radio telescope catalogs of space objects. After referencing those catalogs, the algorithm finds one item from one catalog, and references all items from the
 other catalog to see if they are the same. This is done for both catalogs, and the function returns the matches, and even returns the non-matches. This project helped me learn python's packages AstroPy to read FITS image files and NumPy to make usable data. I learned how to create a viable algorithm to cross reference space catalogs, how to work with large data files to create usable data, and print out easy to read results.
 
+## My Astronomy Website
+
+I coded my own website to demonstrate what I'm able to do with CSS and HTML, and to display some of my astrophotography photos that I have imaged and processed myself.
+
+This project took about a year and a half to complete, as I was a bit on and off with it. It was a fun project to create, and I hope to get more experience with stuff like this soon! [Click Here](https://vibarra.github.io) to see the website in its entirety, and enjoy scrolling through it! It's my pride and joy! :)
+
 ## Cross-matching algorithm
 
 In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension (RA) & Declination (DEC). There is also other data contained within the files but I took only the data I needed using array segmentation. Here is a sample of that data:
@@ -128,11 +134,5 @@ print(no_matches[:3])
 print(len(no_matches))
 
 ```
-
-## My Astronomy Website
-
-I coded my own website to demonstrate what I'm able to do with CSS and HTML, and to display some of my astrophotography photos that I have imaged and processed myself.
-
-This project took about a year and a half to complete, as I was a bit on and off with it. It was a fun project to create, and I hope to get more experience with stuff like this soon! [Click Here](https://vibarra.github.io) to see the website in its entirety, and enjoy scrolling through it! It's my pride and joy! :)
 
 
