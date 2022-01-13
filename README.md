@@ -31,13 +31,13 @@ def hms2dec(h, m, s):
   decimal_degree = (h*15) + m/60 + s/3600
   return decimal_degree
   
-Converting DMS values to decimal degrees
+#Converting DMS values to decimal degrees
 def dms2dec(d, m, s):
     sign = d/abs(d)
     dec = abs(d) + m/60 + s/3600
     return sign*dec
     
-Angular distance formula, using the Haversine equation broken down into parts
+#Angular distance formula, using the Haversine equation broken down into parts
 def angular_dist(r1, d1, r2, d2):
     #To use the numpy trig functions, we first need to convert each value to radians
     r1 = np.radians(r1)
@@ -51,7 +51,7 @@ def angular_dist(r1, d1, r2, d2):
     #After completing the trig calculations, we can convert the final value back to degrees
     return np.degrees(d)
 
-The function to read in the BSS data file
+#The function to read in the BSS data file
 def import_bss():
   coords = np.loadtxt('bss.dat', usecols=range(1,7))
   list_of_objects = []
@@ -71,7 +71,7 @@ def import_bss():
     list_of_objects.append(obj)
   return list_of_objects
   
-Function that reads in the SuperCOSMOS data file
+#Function that reads in the SuperCOSMOS data file
 def import_super():
   coords = np.loadtxt('super.csv', delimiter=',', skiprows=1, usecols=range(0,2))
   list_of_obj = []
@@ -85,7 +85,7 @@ def import_super():
     list_of_obj.append(obj)
   return list_of_obj
 
-The crossmatch function will compare all objects of each catalog to each other, determining how many seem to match.
+#The crossmatch function will compare all objects of each catalog to each other, determining how many seem to match.
 def crossmatch(cat1, cat2, threshold):
   matches = []
   no_matches = []
@@ -104,7 +104,7 @@ def crossmatch(cat1, cat2, threshold):
       matches.append((id1, closest_id2, closest_dist))
   return matches, no_matches
   
-This is the code to test the crossmatch function.
+#This is the code to test the crossmatch function.
 bss_cat = import_bss()
 super_cat = import_super()
 
