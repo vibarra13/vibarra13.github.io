@@ -12,7 +12,7 @@ other catalog to see if they are the same. This is done for both catalogs, and t
 
 I coded my own website to demonstrate what I'm able to do with CSS and HTML, and to display some of my astrophotography photos that I have imaged and processed myself.
 
-This project took about a year and a half to complete, as I was a bit on and off with it. It was a fun project to create, and I hope to get more experience with stuff like this soon! [Click Here](https://vibarra.github.io) to see the website in its entirety, and enjoy scrolling through it! It's my pride and joy! :)
+This project took about a year and a half to complete, as I was a bit on and off with it. It was a fun project to create, and I hope to get more experience with stuff like this soon! [Click Here](https://vibarra13.github.io/astronomy-website/AstronomyHomePage.html) to see the website in its entirety, and enjoy scrolling through it! It's my pride and joy! :)
 
 ## Cross-matching algorithm
 
