@@ -18,7 +18,8 @@ This project took about a year and a half to complete, as I was a bit on and off
 
 In order to see how the algorithm works, I need to demonstrate the files that contain the data. They are from the SuperCOSMOS radio telescope catalog, and the BSS (AT20G Astronomical radio catalog) catalog. Both of the catalog files contain information about their ID number and their position in the celestial sphere in Right Ascension (RA) & Declination (DEC). There is also other data contained within the files but I took only the data I needed using array segmentation. Here is a sample of that data:
 
-```markdown
+```
+
 Data file: the explanation of the column numbers we need (1-7)
 Column: 1. ID Number of the object
         2. Hour in RA
@@ -36,6 +37,8 @@ Column: 1. ID Number of the object
 That is a small sample of all the data in the BSS AT20G Catalog. Each row is one celestial object, with its ID number, coordinates in RA and DEC, in order. The only columns we need from each row are 1-7. I took the first three numbers (2-4) from the RA value, the second three numbers (5-7) from the DEC value, and converted them both to decimal degrees. This is how I came up with a definitive location for them on the celestial sphere. I created an angular distance formula using the Haversine equation to calculate distances between two objects, using the decimal degree values as input values.
 
 Lastly, it was all a matter of creating a function with 2 variables to read in both the BSS and SuperCOSMOS catalogs, and a third input variable to set a threshold of how close something has to be to something else to consider it the same object. Here are the necessary equations to make this work:
+
+### Equations
 
 ```
 #Converting RA values to decimal degrees
