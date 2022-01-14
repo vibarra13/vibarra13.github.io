@@ -133,14 +133,19 @@ print(matches[:3])
 print(no_matches[:3])
 print(len(no_matches))
 
+```
+
 ### Output
 
+How to read this data: On the first line, it returned the first three matches. Object ID 1 and 2 were a match, and the distance between them was 0.00010988610938729323 degrees, or 0.395 arcseconds. The next match was object ID's 2 and 4, with a distance of 0.00076498459672553955 degrees, and so on.
+
+```
 #For a maximum closest distance of 40/3600 (40 arcseconds), these were the results:
 [(1, 2, 0.00010988610938729323), (2, 4, 0.00076498459672553955), (3, 5, 0.00020863352870743279)]
 [5, 6, 11]
 9
 
-How to read this data: On the first line, it returned the first three matches. Object ID 1 and 2 were a match, and the distance between them was 0.00010988610938729323 degrees, or 0.395 arcseconds. The next match was object ID's 2 and 4, with a distance of 0.00076498459672553955 degrees, etc.
+
 
 #For a maximum closest distance of 5/3600 (5 arcseconds), these were the results:
 [(1, 2, 0.00010988610938729323), (2, 4, 0.0007649845967255396), (3, 5, 0.0002086335287074328)]
