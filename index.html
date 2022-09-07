@@ -20,7 +20,7 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
-							<span class="icon fa-gem"></span>
+							<i class="fa fa-space-shuttle" aria-hidden="true"></i>
 						</div>
 						<div class="content">
 							<div class="inner">
@@ -67,6 +67,7 @@
 									I code in Python and web development languages, so those will be featured here. These are projects that made me feel happy to complete,
 									and it makes me feel familiar with the programming languages. 
 								</p>
+								<h1>FITS Image Viewer</h1>
 								<p>The first project I will showcase is a FITS image viewer program. It is coded in Python, and uses the packages: Numpy, Astropy, and matplotlib.
 									I created this project to demonstrate my knowledge in arrays, 2-d plots, and external packages.<br><br>
 									FITS images are a file format used for photos regarding astronomy. These files contain long arrays of data, which contain information about 
@@ -76,14 +77,65 @@
 									in the FITS files that I used contained integers that correlated to the brightness of a pixel, the higher the value, the brighter the actual pixel 
 									of the astrophotograph. In addition, the program returns the brightest spot on the image, and can also stack multiple images and return the stacked image's 
 									brightest spot. This might be a lot of information, but I promise I will make it clear.
-									<br><br> All that said, I will now sample a piece of code that is vital to the program's success, and break it down piece by piece:
+									<br><br> With all that said, I will now sample two functions vital to the success of the app, and break it down piece by piece:
+									<br><br>
+									<code>
+										def read_fits(fits_file):<br>
+											hdulist = fits.open(fits_file)<br>
+											data = hdulist[0].data<br>
+											return data<br>
+									</code>
 								</p>
+								<p>
+									The read_fits() function is meant to read in a single fits file, and return the data contained within the file. 
+									I included this function because it demonstrates the simple use of the FITS.open function to access a fits file. The data variable
+									becomes a 2-d array of ints because the image is 2-d, and it stores the brightness of the pixels of the image. Hdulist is the list of
+									information of the fits image, and the [0] grabs the first set of data which is pixel brightness.
+								</p>
+									<code>
+										def brightest_point(fits_data):<br>
+											# without unravelling the index, location would return a large integer instead of coordinates<br>
+											location = np.unravel_index(np.argmax(fits_data), np.shape(fits_data))<br>
+											return location
+									</code>
+								<p>
+									<br>
+									This is the next shortest function of the program, which essentially returns the brightest point of the image as a set
+									of coordinates (x,y). It highlights the usage of the numpy package to get the maximum value of the data. One issue I ran into 
+									was getting a 5 digit integer for the returned value. This wasn't a coordinate, but instead a single number that came about as 
+									a memory characteristic. The memory of the value I needed was stored linearly, and not in a 2-d array as I wished, so calling
+									argmax would return the memory address of the location I was looking for, and not the coordinates. Unravel_index allowed me to 
+									convert the linear indices into indices of a multi-dimensional block, in this case the shape of fits_data, finally allowing 
+									the function to return the correct coordinates.
+								</p>
+								<p>
+									Here is a sample of the program:
+								</p>
+								<img src="images/sample1_of_fits.png" width="500" height="auto">
+								<p>
+									After inputting one or several image files exact directories, the 2-d plot shows up and the program returns the
+									location and value of the brightest point:
+								</p>
+								<img src="images/sample2_of_fits.png" width="500" height="auto">
+								<p>
+									The plot is a false-color plot, meaning there's no actual color in the image. The image is just made up of number data, and the
+									colors here just help map out the values of those numbers to make some sense of the data. In the above example, I input two fits 
+									images, and they averaged out the brightest point at (101, 100). Its value was 0.12, which is pretty bright compared to other 
+									spots on the image. This brightness is important because it means there was a higher flux of radio signals. Pulsars emit a high amount
+									of energy in radio signals, so this could be a potential pulsar.
+								</p>
+								<p>
+									This program is meant to detect pulsars using radio signals, but it is unlikely to do so with other wavelengths of light. 
+									When inputting a non-existent file, or just making a typo mistake, the program shuts down and it would need to be restarted.
+									Source code of this program is on my <a href="github.com/vibarra13">Github.com profile</a>.
+								</p>
+								
 							</article>
 						
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact Me!</h2>
-								<form method="post" action="#">
+								<form method="post" action="index.html">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
@@ -355,7 +407,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
 			</div>
