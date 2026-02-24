@@ -156,9 +156,7 @@ def plotfield(U, psi, x, y, C1=1, C2=1):
             v[i][j] = U(psi, x[i], y[j], C1)[1] # index 1 of U() = v
     return u, v
 </code></pre>
-								
-								
-								<br><br>
+							
 								Last but not least is the plotting of my functions. One great thing about numpy.meshgrid() is that it allows an element-wise operation on simple arithmetic.
 								Therefore, it was simple to calculate psi(x,y) over the entire pre-determined meshgrid xg and yg. All I did was pass xg and yg to psi1(x,y) as if they were
 								single x and y values, and it saved to result1 as an NxN grid. In addition, I use streamplot to seamlessly align all the vectors to show a flow instead of
@@ -506,3 +504,4 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
