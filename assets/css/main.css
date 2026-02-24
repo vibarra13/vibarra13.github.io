@@ -1664,6 +1664,14 @@ input, select, textarea {
     background: none !important;
 }
 
+#main article {
+    opacity: 1 !important;
+}
+.image.main {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
 
 
 
