@@ -187,18 +187,18 @@ plt.figtext(0.10,-0.10,"Figure 1: Flow on a flat surface characterized by\n  "
 plt.show()
 </code></pre>
 
-							Below are the plots of the three 2-D functions, each titled and captioned according to its respective function.
-							This first image appears to form a saddle, like the saddle one would find in a problem from differential equations, with an unstable equilibrium everywhere.
-							<span class="image main"><img src="images/streamlinespsi1.png"/></span>
-							<br>The second is ideal flow around a vortex.
-							<span class="image main"><img src="images/streamlinespsi2.png"/></span>
-							<br>The last is ideal flow around a 2 dimensional half-body, a classic problem in fluid dynamics.
-							<span class="image main"><img src="images/streamlinespsi3.png"/></span>
-							<br>
-							My choice of grid was from xmin = ymin = -10 up to xmax = ymax = 10. This grid really just depends on the specific application one may be going for,
-							so it is not a pre-defined rule. As one may be able to tell, the vector flow streamlines run tangential to the contour lines of the position function,
-							which perfectly describes what a derivative of a function is. Therefore, the results speak for themselves, and this is why I get so much satisfaction
-							out of this work. Seeing the results confirm what the mathematics speculates is rewarding to say the least.
+								Below are the plots of the three 2-D functions, each titled and captioned according to its respective function.
+								This first image appears to form a saddle, like the saddle one would find in a problem from differential equations, with an unstable equilibrium everywhere.
+								<span class="image main"><img src="images/streamlinespsi1.png"/></span>
+								<br>The second is ideal flow around a vortex.
+								<span class="image main"><img src="images/streamlinespsi2.png"/></span>
+								<br>The last is ideal flow around a 2 dimensional half-body, a classic problem in fluid dynamics.
+								<span class="image main"><img src="images/streamlinespsi3.png"/></span>
+								<br>
+								My choice of grid was from xmin = ymin = -10 up to xmax = ymax = 10. This grid really just depends on the specific application one may be going for,
+								so it is not a pre-defined rule. As one may be able to tell, the vector flow streamlines run tangential to the contour lines of the position function,
+								which perfectly describes what a derivative of a function is. Therefore, the results speak for themselves, and this is why I get so much satisfaction
+								out of this work. Seeing the results confirm what the mathematics speculates is rewarding to say the least.
 							</p>
 								
 							
@@ -207,7 +207,68 @@ plt.show()
 						<!-- Electric Field Lines -->
 						<article id="Efield">
 							<h2 class="major">Electric Field Lines</h2>
-							
+							<p>
+								This project involves arguably the most important concept in electrostatics: electric field due to point charges. This is the basic building
+								block of electrostatics which was first postulated and supported by Charles-Augustin de Coulomb, Carl Friedrich Gauss, Michael Faraday, 
+								James Clerk Maxwell, and many more. From point charges to a distribution of point charges in the form of spheres, plates, cylinders, etc., 
+								along with conducting and insulating properties, there is much to be simulated from the simple Coulomb Law.
+								<br><br>My implementation of Coulomb's Law involves simulating the combined electric field of multiple point charges. It's a simple yet 
+								effective program to learn about the physical aspect of electricity. I designed this project the same way I did the other to allow for full 
+								customizability of the charge distributions. Everything from charge location and value to dipole/multipole orientation can be fully customized
+								to the researcher's desire. This is the numerical adaptation of the electric field formula due to a point charge: 
+								$$ { \vec{E}(\vec{x}) = \sum_{i=0}^{n-1}\vec{E}_i(\vec{x}) = \sum_{i=0}^{n-1}kq_i\frac{\vec{x}-\vec{x_i}}{|\vec{x}-\vec{x_i}|^3} } $$
+								Where qi is the charge in Coulombs, xi=(x,y,z)i is the position of the charge in space, and x is an arbitrary point in space. All positions are
+								calculated with respect to a stationary reference system. The following code is the entirety of necessary code to simulate a few point charges:
+<pre><code>xmin, xmax = -2.0, 2.0
+ymin, ymax = -2.0, 2.0
+nx = 50
+ny = 50
+# 2D array
+x = np.linspace(xmin, xmax, nx)
+y = np.linspace(ymin, ymax, ny)
+
+# tuple containing the locations of charges
+xqs1 = [[-1, 0], [1, 0]]
+xqs2 = [[-1, 0], [1, 0], [0, 1], [0,-1]]
+
+# charge values
+qs1 = [-1, 1]
+qs2 = [200, 200, 200, 200]
+
+# boltzmann constant
+kb = 1.380E-23
+
+# electric field formula
+def E_field(xs, ys, qiloc, qival):
+    nq = len(qival)
+    Exs = np.zeros((nx, nx)) 
+    Eys = np.zeros((ny, ny))
+    for j in range(ny):
+        for i in range(nx):
+            for qi in range(nq):
+                r = sqrt((xs[j] - qiloc[qi][0])**2 + (ys[i] - qiloc[qi][1])**2)
+                
+                Exs[i][j] += (kb*qival[qi] * (xs[j] - qiloc[qi][0]))/r**3
+                Eys[i][j] += (kb*qival[qi] * (ys[i] - qiloc[qi][1]))/r**3
+                
+    return Exs, Eys
+
+
+Exs, Eys = E_field(x, y, xqs1, qs1)
+plt.streamplot(x, y, Exs, Eys, density=2.5)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.figtext(0.22, -0.08, "Figure 1: Electric Field lines around two opposite \npoint charges, q = +1 on the right, q = -1 on \nthe left")
+plt.title(r"Electric Field: $ \vec{E}(\vec{x}) = \sum_{i=0}^{n-1}\vec{E}_i(\vec{x}) = \sum_{i=0}^{n-1}k*q_i\frac{\vec{x}-\vec{x_i}}{|\vec{x}-\vec{x_i}|^3} $")
+plt.show()
+
+</code></pre>
+								<span class="image main"><img src="images/efield1.png"/></span>
+								<span class="image main"><img src="images/efield2.png"/></span>
+								<span class="image main"><img src="images/efield3.png"/></span>
+								These are some of the different configurations that can be made with my program. It's possible to create a distribution of charges, like I mentioned
+								at the beginning of this page, and even insulators.
+							</p>
 						</article>
 						
 						<!-- Contact -->
@@ -504,4 +565,5 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
