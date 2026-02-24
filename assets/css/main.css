@@ -1661,22 +1661,12 @@ input, select, textarea {
 		}
 
 
-/* Remove the dark overlay that dims content inside articles */
-#main article:before {
-    background: none !important;
-    opacity: 0 !important;
-}
-#main article {
-    opacity: 1 !important;
-}
-#main article.active,
-#main article.inactive {
-    opacity: 1 !important;
-}
+
 .image.main img {
     opacity: 1 !important;
     filter: none !important;
 }
+
 
 
 
