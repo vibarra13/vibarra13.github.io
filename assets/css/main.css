@@ -1660,9 +1660,10 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-/* Remove scrollbars from code blocks */
-pre {
-    overflow: visible !important;
-    white-space: pre-wrap;   /* allows wrapping instead of horizontal scrolling */
-    word-wrap: break-word;   /* breaks long lines if needed */
+/* Remove dimming from images inside articles */
+#main article img {
+    opacity: 1 !important;
+    filter: none !important;
 }
+
+
