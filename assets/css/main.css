@@ -1660,16 +1660,10 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-/* Remove dimming from images and containers */
-.image,
-.image.main,
-.image.main img,
-#main article,
-.image.main:before {
-    opacity: 1 !important;
-    filter: none !important;
+#main article:before {
     background: none !important;
 }
+
 
 
 
