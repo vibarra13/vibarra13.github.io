@@ -1660,15 +1660,17 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-/* Remove all dimming from Dimension theme */
-#main article,
-#main article:before,
-.image,
-.image.main,
-.image.main img {
-    opacity: 1 !important;
-    filter: none !important;
+/* Remove the dark overlay that dims content inside articles */
+#main article:before {
     background: none !important;
+    opacity: 0 !important;
+}
+#main article {
+    opacity: 1 !important;
+}
+#main article.active,
+#main article.inactive {
+    opacity: 1 !important;
 }
 
 
