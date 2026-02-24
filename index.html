@@ -117,33 +117,90 @@
 								a fluid has constant density, no viscosity/friction, and no vorticity except at singularities. Thus, the physical principles are based in fluid dynamics.
 								I created several scenarios of 2D flow, each of a different 2-D function.
 								<br><br>
-								$$ { \psi(x,y) = 2Axy } $$
+								$$ { \psi_1(x,y) = 2Axy } $$
 								The above formula is the first formula I modeled for the ideal 2D flow project.
-								$$ { \psi(x,y) = \frac{\Gamma}{2\pi}*ln{\sqrt{x^2 + y^2}} } $$
+								$$ { \psi_2(x,y) = \frac{\Gamma}{2\pi}*ln{\sqrt{x^2 + y^2}} } $$
 								Above is the second 2-d formula.
-								$$ { \psi(x,y) = Uy + \frac{m}{2\pi}\arctan{\frac{y}{x}} } $$
+								$$ { \psi_3(x,y) = Uy + \frac{m}{2\pi}\arctan{\frac{y}{x}} } $$
 								Above is the third.
 								<br><br>
 								The above three formulas plot each of the three 2-D surfaces over which I calculated the vector velocity flow. As for the vector velocity
-								flow, the vector was characterized by:
-								$$ { \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy} - \frac{d\psi(x,y)}{dx} } $$
-								After confirming the nature of the formulae, I created a function U in python: <code>def U(psi, x, y, C1=1, C2=1)</code>. This function calculates 
-								$$ { \vec{U} = u\hat{i} + v\hat{j} } $$ vectors for each x and y on the grid I created, for the given psi function in the first parameter. Because each vector
-								component was a partial derivative, I calculated the partial derivative of psi(x,y) with respect to y for the i component, and with respect to x for the j 
-								component, using the central difference approximation method of differentiation. I saved the vector's (i,j) components as a tuple in each (x,y) coordinate, 
-								so the final form of the resulting array was A[x][y][0 or 1], for the x or y component of the (x,y) value of A. With this, I was able to plot all the vectors
-								to create a vector field with <code>def plotfield(U, psi, x, y, C1=1, C2=1).</code> This was the trickiest part of the program, as I used meshgrid to save the
-								arrays of (x,y) pairs to X and Y matrices.
+								flow, the vector was characterized by the vector U, with components i and j:
+								$$ { \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy}\hat{i} - \frac{d\psi(x,y)}{dx}\hat{j} } $$
+								I created a function in Python to replicate the above formula, and its only purpose is to calculate the i and j components from the vector U. I used a 
+								central difference Taylor approximation for the first derivative of Psi(x,y), deriving with respect to y for the i component, and with respect to x for
+								the j component. After calculations, the ui and vj components of the vector are returned as a tuple:
+<pre><code>def U(psi, x, y, C1=1, C2=1)
+    h = 0.01 # step in x direction
+    k = 0.01 # step in y direction
+    u = (psi(x, y+k, C1) - psi(x, y-k, C1))/(2*k) # ui^ = dPsi/dy
+    v = -(psi(x+h, y, C1) - psi(x-h, y, C1))/(2*h) # vj^ = -dPsi/dx
+    return u, v # return vector tuple (i,j) of derivative at (x,y) point on grid
+</code></pre>The function
+								$$ { \vec{U} = u\hat{i} + v\hat{j} } $$ represents the vector of the derivative of Psi(x,y) at any (x,y) location on the grid. In other words, if Psi(x,y) 
+								is the 2-D position function, then vector U is the derivative of the contour at a given (x,y) location.
+								
 								<br><br>
-								Below are the plots of the three 2-D functions, each titled and captioned according to its respective function:
-								<span class="image main"><img src="images/streamlinespsi1.png"/></span>
-								<span class="image main"><img src="images/streamlinespsi2.png"/></span>
-								<span class="image main"><img src="images/streamlinespsi3.png"/></span>
-								<br>
-								My choice of grid was from xmin = ymin = -10 up to xmax = ymax = 10. This grid really just depends on the specific application one may be going for,
-								so it is not a pre-defined rule. As one may be able to tell, the vector flow streamlines run tangential to the contour lines of the position function,
-								which perfectly describes what a derivative of a function is. Therefore, the results speak for themselves, and this is why I get so much satisfaction
-								out of this work. Seeing the results confirm what the mathematics speculates is rewarding to say the least.
+								The last function's purpose was to save the i and j velocity components to every (x,y) location. The way I approached this was by creating two NxN matrices,
+								one for ui and another for vj. I used a nested loop to access all y values across all x values. I repeated the calculations for u[x,y] and v[x,y] using my 
+								previous function U, until I was left with full NxN matrices. Now, all values for the velocity have been calculated at every (x,y), and I can access either
+								i or j at any time:
+<pre><code># plots vector field, takes in any of the psi functions at (x,y), calculates U
+def plotfield(U, psi, x, y, C1=1, C2=1):
+    u = np.zeros((n,n))
+    v = np.zeros((n,n))
+    for i in range(n):
+        for j in range(n):
+            # calculate ui^ + vj^ at each (x,y) pair
+            u[i][j] = U(psi, x[i], y[j], C1)[0] # index 0 of U() = u
+            v[i][j] = U(psi, x[i], y[j], C1)[1] # index 1 of U() = v
+    return u, v
+</code></pre>
+								
+								
+								<br><br>
+								Last but not least is the plotting of my functions. One great thing about numpy.meshgrid() is that it allows an element-wise operation on simple arithmetic.
+								Therefore, it was simple to calculate psi(x,y) over the entire pre-determined meshgrid xg and yg. All I did was pass xg and yg to psi1(x,y) as if they were
+								single x and y values, and it saved to result1 as an NxN grid. In addition, I use streamplot to seamlessly align all the vectors to show a flow instead of
+								many individual little vectors.
+<pre><code>n = 200
+xmin = ymin = -10
+xmax = ymax = 10
+x = np.linspace(xmin, xmax, n)
+y = np.linspace(ymin, ymax, n)
+# a meshgrid allows me to do a simple element-wise operation while keeping psi(x,y)
+# as simple as possible, just the function itself
+xg, yg = np.meshgrid(x, y)
+A = 1
+result1 = psi1(xg, yg, A) # using meshgrid, psi calculates over the entire 2-d grid
+u, v = plotfield(U, psi1, x, y, A) # plot the i^ and j^ components of the vector derivatives
+
+# plot the result
+plt.figure(figsize=(5, 4))
+plt.streamplot(xg, yg, u, v, density=0.6, color="black")
+contours = plt.contour(xg, yg, result1, levels=30, cmap="plasma")
+plt.clabel(contours, inline=True, fontsize=6)
+plt.colorbar()
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title(r"Streamlines of $ \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy} - \frac{d\psi(x,y)}{dx} $")
+plt.figtext(0.10,-0.10,"Figure 1: Flow on a flat surface characterized by\n  "
+            r"$\psi(x,y)=2Axy$, n={}, on a contour plot.".format(n))
+plt.show()
+</code></pre>
+
+							Below are the plots of the three 2-D functions, each titled and captioned according to its respective function.
+							This first image appears to form a saddle, like the saddle one would find in a problem from differential equations, with an unstable equilibrium everywhere.
+							<span class="image main"><img src="images/streamlinespsi1.png"/></span>
+							<br>The second is ideal flow around a vortex.
+							<span class="image main"><img src="images/streamlinespsi2.png"/></span>
+							<br>The last is ideal flow around a 2 dimensional half-body, a classic problem in fluid dynamics.
+							<span class="image main"><img src="images/streamlinespsi3.png"/></span>
+							<br>
+							My choice of grid was from xmin = ymin = -10 up to xmax = ymax = 10. This grid really just depends on the specific application one may be going for,
+							so it is not a pre-defined rule. As one may be able to tell, the vector flow streamlines run tangential to the contour lines of the position function,
+							which perfectly describes what a derivative of a function is. Therefore, the results speak for themselves, and this is why I get so much satisfaction
+							out of this work. Seeing the results confirm what the mathematics speculates is rewarding to say the least.
 							</p>
 								
 							
@@ -449,31 +506,3 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
