@@ -122,14 +122,17 @@
 								flow, the vector was characterized by:
 								$$ { \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy} - \frac{d\psi(x,y)}{dx} } $$
 								After confirming the nature of the formulae, I created a function U in python: <code>def U(psi, x, y, C1=1, C2=1)</code>. This function calculates 
-								$ { \vec{U} = u\hat{i} + v\hat{j} } $ vectors for each x and y on the grid I created, for the given psi function in the first parameter. Because each vector
+								$$ { \vec{U} = u\hat{i} + v\hat{j} } $$ vectors for each x and y on the grid I created, for the given psi function in the first parameter. Because each vector
 								component was a partial derivative, I calculated the partial derivative of psi(x,y) with respect to y for the i component, and with respect to x for the j 
 								component, using the central difference approximation method of differentiation. I saved the vector's (i,j) components as a tuple in each (x,y) coordinate, 
 								so the final form of the resulting array was A[x][y][0 or 1], for the x or y component of the (x,y) value of A. With this, I was able to plot all the vectors
-								to create a vector field with <code>def plotfield(U, psi, x, y, C1=1, C2=1).</code> Thiswas the trickiest part of the program, as I used meshgrid to save the
+								to create a vector field with <code>def plotfield(U, psi, x, y, C1=1, C2=1).</code> This was the trickiest part of the program, as I used meshgrid to save the
 								arrays of (x,y) pairs to X and Y matrices.
 								<br><br>
 								Below are the plots of the three 2-D functions, each titled and captioned according to its respective function:
+								<span class="image main"><img src="images/streamlines_psi1.png"/></span>
+								<span class="image main"><img src="images/streamlines_psi2.png"/></span>
+								<span class="image main"><img src="images/streamlines_psi3.png"/></span>
 							</p>
 								
 							
@@ -435,6 +438,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
 
 
