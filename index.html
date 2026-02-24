@@ -103,25 +103,33 @@
 								adapted to carry out thousands, millions, and possibly billions of calculations. This step is comparable to the fun comp sci 101 icebreaker: "Make a peanut 
 								butter and jelly sandwich". Every line of code must be explicitly stated to handle every step.
 								<br>
-								<u>Step 2:</u>After planning is (sort of) complete, I begin coding. I create the groundwork first, starting with any necessary libraries, making my grid, and defining
+								<u>Step 2:</u> After planning is (sort of) complete, I begin coding. I create the groundwork first, starting with any necessary libraries, making my grid, and defining
 								the functions I will need. I like my functions to be simple, yet effective, so I assign each of my functions one task. I do not mind writing many functions,
 								as long as each of them excel in doing what I want them to. This makes my code much easier to read, and if any errors arise, I can easily track where they
 								originated.
 								<br>
-								<u>Step 3:</u>The final steps of my coding process include creating the final arrays and matrices of calculations, then plotting those arrays and matrices. Matplotlib
+								<u>Step 3:</u> The final steps of my coding process include creating the final arrays and matrices of calculations, then plotting those arrays and matrices. Matplotlib
 								is my best friend because it knows exactly what I want 99% of the time. The other 1%, it pushes me to figure out what I want.
 								
 								$$ { \psi(x,y) = 2Axy } $$
-								This is the first formula I modeled for the ideal 2D flow project.
+								The above formula is the first formula I modeled for the ideal 2D flow project.
 								$$ { \psi(x,y) = \frac{\Gamma}{2\pi}*ln{\sqrt{x^2 + y^2}} } $$
-								This is the second 2-d formula.
+								Above is the second 2-d formula.
 								$$ { \psi(x,y) = Uy + \frac{m}{2\pi}\arctan{\frac{y}{x}} } $$
-								This is the third.
+								Above is the third.
 								<br><br>
 								The above three formulas plot each of the three 2-D surfaces over which I calculated the vector velocity flow. As for the vector velocity
 								flow, the vector was characterized by:
 								$$ { \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy} - \frac{d\psi(x,y)}{dx} } $$
-								
+								After confirming the nature of the formulae, I created a function U in python: <code>def U(psi, x, y, C1=1, C2=1)</code>. This function calculates 
+								$ { \vec{U} = u\hat{i} + v\hat{j} } $ vectors for each x and y on the grid I created, for the given psi function in the first parameter. Because each vector
+								component was a partial derivative, I calculated the partial derivative of psi(x,y) with respect to y for the i component, and with respect to x for the j 
+								component, using the central difference approximation method of differentiation. I saved the vector's (i,j) components as a tuple in each (x,y) coordinate, 
+								so the final form of the resulting array was A[x][y][0 or 1], for the x or y component of the (x,y) value of A. With this, I was able to plot all the vectors
+								to create a vector field with <code>def plotfield(U, psi, x, y, C1=1, C2=1).</code> Thiswas the trickiest part of the program, as I used meshgrid to save the
+								arrays of (x,y) pairs to X and Y matrices.
+								<br><br>
+								Below are the plots of the three 2-D functions, each titled and captioned according to its respective function:
 							</p>
 								
 							
@@ -427,6 +435,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
 
 
