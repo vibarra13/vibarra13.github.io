@@ -1660,17 +1660,17 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-#main article:before {
+/* Remove all dimming from Dimension theme */
+#main article,
+#main article:before,
+.image,
+.image.main,
+.image.main img {
+    opacity: 1 !important;
+    filter: none !important;
     background: none !important;
 }
 
-#main article {
-    opacity: 1 !important;
-}
-.image.main {
-    opacity: 1 !important;
-    filter: none !important;
-}
 
 
 
