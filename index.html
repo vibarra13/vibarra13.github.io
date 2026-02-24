@@ -110,31 +110,20 @@
 								<br>
 								<u>Step 3:</u>The final steps of my coding process include creating the final arrays and matrices of calculations, then plotting those arrays and matrices. Matplotlib
 								is my best friend because it knows exactly what I want 99% of the time. The other 1%, it pushes me to figure out what I want.
-									
-								<br><br>
+								
 								$$ { \psi(x,y) = 2Axy } $$
-								This is the first formula I modeled for the ideal 2D flow project. The python function I created for this formula is:
-							</p>
-								
-									<code>
-									# psi function 1
-									def psi1(x, y, A):
-										psi = 2*A*x*y
-										return psi
-									</code>
-								
-							<p>
+								This is the first formula I modeled for the ideal 2D flow project.
 								$$ { \psi(x,y) = \frac{\Gamma}{2\pi}*ln{\sqrt{x^2 + y^2}} } $$
-								This is the second 2-d formula. In python:
+								This is the second 2-d formula.
+								$$ { \psi(x,y) = Uy + \frac{m}{2\pi}\arctan{\frac{y}{x}} } $$
+								This is the third.
+								<br><br>
+								The above three formulas plot each of the three 2-D surfaces over which I calculated the vector velocity flow. As for the vector velocity
+								flow, the vector was characterized by:
+								$$ { \vec{U} = u\hat{i} + v\hat{j} = \frac{d\psi(x,y)}{dy} - \frac{d\psi(x,y)}{dx} } $$
+								
 							</p>
-								<pre style="width": 50%>
-									<code>
-									# psi function 2
-									def psi2(x, y, Gamma):
-									    psi = (Gamma/(2*pi))*log(sqrt(x**2+y**2))
-									    return psi
-									</code>
-								</pre>
+								
 							
 						</article>
 
@@ -438,6 +427,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
 
 
