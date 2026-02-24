@@ -97,22 +97,32 @@
 								a fluid has constant density, no viscosity/friction, and no vorticity except at singularities. Thus, the physical principles are based in fluid dynamics.
 								I created several scenarios of 2D flow, each of a different 2-D function.
 								<br><br>
-									Before doing anything with coding, I like to lay down the foundations of my calculations on paper. By using pencil and paper, it is much easier
+								<h3 class="minor">My Computational Workflow</h3>
+								<u>Step 1:</u> Before doing anything with coding, I like to lay down the foundations of my calculations on paper. By using pencil and paper, it is much easier
 								to visualize a plan. This plan must be as explicit as possible to get my code to work without error. All formulas and physical principles must be numerically 
 								adapted to carry out thousands, millions, and possibly billions of calculations. This step is comparable to the fun comp sci 101 icebreaker: "Make a peanut 
 								butter and jelly sandwich". Every line of code must be explicitly stated to handle every step.
 								<br>
-									After planning is (sort of) complete, I begin coding. I create the groundwork first, starting with any necessary libraries, making my grid, and defining
+								<u>Step 2:</u>After planning is (sort of) complete, I begin coding. I create the groundwork first, starting with any necessary libraries, making my grid, and defining
 								the functions I will need. I like my functions to be simple, yet effective, so I assign each of my functions one task. I do not mind writing many functions,
 								as long as each of them excel in doing what I want them to. This makes my code much easier to read, and if any errors arise, I can easily track where they
 								originated.
 								<br>
-									The final steps of my coding process include creating the final arrays and matrices of calculations, then plotting those arrays and matrices. Matplotlib
+								<u>Step 3:</u>The final steps of my coding process include creating the final arrays and matrices of calculations, then plotting those arrays and matrices. Matplotlib
 								is my best friend because it knows exactly what I want 99% of the time. The other 1%, it pushes me to figure out what I want.
 									
 								<br><br>
-								\[ \psi(x,y) = 2Axy ]\
-								This is the first function I modeled for the ideal 2D flow project.
+								\( \Psi(x,y) = 2Axy )\
+								This is the first formula I modeled for the ideal 2D flow project. The python function I created for this formula is:
+								<code>
+									# psi function 1
+									def psi1(x, y, A):
+									    psi = 2*A*x*y
+									    return psi
+								</code>
+
+								<br><br>
+								\( \Psi(x,y) = \frac{\tau}{2\pi}*ln{\sqrt(x^2 + y^2)}
 							</p>
 						</article>
 
@@ -416,6 +426,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
 
 
