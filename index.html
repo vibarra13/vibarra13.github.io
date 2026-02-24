@@ -103,7 +103,7 @@
 								<ul class="actions"> 
 									<li><a href="#2dflow" class="button">Ideal 2D Flow</a></li>
 									<li><a href="#Efield" class="button">Elec. Field Lines</a></li>
-									<li><a href="#solar" class="button">Solar Research</a></li>
+									<li><a href="#imageprocess" class="button">Image Processing</a></li>
 								</ul>
 							</nav>	
 						</article>
@@ -268,6 +268,23 @@ plt.show()
 								<span class="image main"><img src="images/efield3.png"/></span>
 								These are some of the different configurations that can be made with my program. It's possible to create a distribution of charges, like I mentioned
 								at the beginning of this page, and even insulators.
+							</p>
+						</article>
+
+						<!-- Image Processing -->
+						<article id="imageprocess">
+							<h2 class="major">Image Processing</h2>
+							<p>
+								This project is a work-in-progress. A short outline of what I wish to achieve with this project:<br>
+								Understand the physical problems associated with image formation which involve the traveling of light from a galaxy/star/nebula through the atmosphere
+								and into the optical system, which then hits the detector at the end. To start, I'm going to simulate the effects of atmospheric turbulence (aka seeing)
+								which have been modeled by the Kolmogorov and Von Karman spectra. <br>Then, I will simulate the optical path (i.e. diffraction of light) using the Point 
+								Spread Function and possibly more characterizing functions for light traveling through an aperture. Next, the photon noise and read noise will be 
+								calculated to simulate what an actual detector on a telescope would capture. I will use these on already processed astrophotographs to simulate what
+								is actually seen by the detector at any given moment in time. <br>Last, I will use noise reduction methods and deconvolution to un-do the effects of random
+								noise from photons on the detector and the blurring from atmospheric turbulence, respectively.
+							
+							    Some important scientific ideas I will need to implement into my project are: light diffraction, Kolmogorov/Karman phase screens (smaller/bigger apertures, respectively), Poisson distribution for photon noise, and Gaussian distribution for sensor noise, etc. I have done image processing before so I am already familiar with what these methods should do at each step, so the only thing I can do now is attempt to implement everything little by little.
 							</p>
 						</article>
 						
@@ -565,5 +582,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
 
