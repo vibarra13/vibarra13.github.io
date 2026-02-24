@@ -1660,10 +1660,12 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-/* Remove dimming from images inside articles */
-#main article img {
+/* Remove dimming from main imgs */
+.image.main img {
     opacity: 1 !important;
     filter: none !important;
 }
+
+
 
 
